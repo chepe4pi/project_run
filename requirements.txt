@@ -2,3 +2,4 @@ Django==5.2
 psycopg2-binary==2.9.10
 django-storages==1.14.6
 boto3==1.37.37
+pip install djangorestframework==3.16.0
