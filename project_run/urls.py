@@ -16,9 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls.static import static
-from django.conf import settings
+
+from app_run.views import RunStartAPIView, RunStopAPIView, company_details, UserViewSet, RunViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/company_details/', company_details),
+    path('api/runs/', RunViewSet.as_view({'get': 'list', 'post': 'create'})),
+    path('api/runs/<int:pk>/', RunViewSet.as_view({'get': 'retrieve'})),
+    path('api/users/', UserViewSet.as_view({'get': 'list'})),
+    path('api/runs/<int:pk>/start/', RunStartAPIView.as_view()),
+    path('api/runs/<int:pk>/stop/', RunStopAPIView.as_view()),
 ]
